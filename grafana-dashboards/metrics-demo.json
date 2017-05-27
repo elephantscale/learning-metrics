@@ -45,7 +45,7 @@
           "targets": [
             {
               "refId": "A",
-              "target": "my-metrcis.demo.counter.count"
+              "target": "my-metrics.demo.counter.count"
             }
           ],
           "thresholds": [],
@@ -114,7 +114,7 @@
           "targets": [
             {
               "refId": "A",
-              "target": "my-metrcis.demo.histogram.count"
+              "target": "my-metrics.demo.histogram.count"
             }
           ],
           "thresholds": [],
@@ -183,11 +183,11 @@
           "targets": [
             {
               "refId": "A",
-              "target": "my-metrcis.demo.timer.mean"
+              "target": "my-metrics.demo.timer.mean"
             },
             {
               "refId": "B",
-              "target": "my-metrcis.demo.timer.p95"
+              "target": "my-metrics.demo.timer.p95"
             }
           ],
           "thresholds": [],
@@ -293,7 +293,7 @@
           "targets": [
             {
               "refId": "A",
-              "target": "my-metrcis.demo.gauge"
+              "target": "my-metrics.demo.gauge"
             }
           ],
           "thresholds": "50,75",
@@ -340,7 +340,7 @@
           "targets": [
             {
               "refId": "A",
-              "target": "my-metrcis.demo.gauge"
+              "target": "my-metrics.demo.gauge"
             }
           ],
           "thresholds": [
@@ -424,11 +424,11 @@
           "targets": [
             {
               "refId": "A",
-              "target": "my-metrcis.demo.meter.mean_rate"
+              "target": "my-metrics.demo.meter.mean_rate"
             },
             {
               "refId": "B",
-              "target": "my-metrcis.demo.meter.m1_rate"
+              "target": "my-metrics.demo.meter.m1_rate"
             }
           ],
           "thresholds": [],
