@@ -58,7 +58,7 @@ public class Consumer implements Runnable {
 
 			// process
 			final Timer.Context timerContext2 = metricsTimerTimeToProcess.time();
-			Utils.randomDelay(100); // simulate processing
+			Utils.randomDelay(300,800); // simulate processing
 			payload.processedTime = System.nanoTime(); // done processing
 			payload.timeToProcess = timerContext2.stop();
 			LOG.debug("Consumer:" + this.id + " : payload:" + payload.id + " time to process: " + payload.timeToProcess

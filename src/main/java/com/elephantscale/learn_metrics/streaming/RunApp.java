@@ -12,7 +12,7 @@ import com.elephantscale.learn_metrics.MyMetricsRegistry;
 public class RunApp {
 	private static final Logger logger = LogManager.getLogger();
 	static int numProducers = 10;
-	static int numConsumers = 5;
+	static int numConsumers = 4;
 	private static Producer[] producers;
 	private static Consumer[] consumers;
 	private final static ExecutorService producerExecutor = Executors.newFixedThreadPool(numProducers);
@@ -50,11 +50,7 @@ public class RunApp {
 			metricsCounterConsumers.inc();
 		}
 		
-		logger.info("Hit Enter or Ctrl+C to terminate program");
-		
-		String input = System.console().readLine();
-		shutdown();
-
+		logger.info("Hit Ctrl+C to terminate program");
 	}
 
 	public static void shutdown() {

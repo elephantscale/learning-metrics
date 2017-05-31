@@ -46,7 +46,7 @@ public class Producer implements Runnable {
 		while (this.keepRunning) {
 			try {
 				addToQ();
-				Utils.randomDelay(500);
+				Utils.randomDelay(250,500);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
