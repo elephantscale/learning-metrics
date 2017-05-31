@@ -7,7 +7,7 @@ import org.apache.logging.log4j.Logger;
 
 import com.codahale.metrics.Counter;
 import com.elephantscale.learn_metrics.MyMetricsRegistry;
-import com.elephantscale.learn_metrics.Utils;
+import com.elephantscale.learn_metrics.MyUtils;
 
 public class Counters {
 
@@ -31,7 +31,7 @@ public class Counters {
 			if (metricsCounterMsgsInQ.getCount() <= 0)
 				metricsCounterMsgsInQ.inc(10L);
 
-			Utils.randomDelay(300);
+			MyUtils.randomDelay(300);
 
 		}
 

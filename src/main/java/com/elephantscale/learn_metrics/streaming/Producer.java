@@ -9,7 +9,7 @@ import org.apache.logging.log4j.Logger;
 import com.codahale.metrics.Meter;
 import com.codahale.metrics.Timer;
 import com.elephantscale.learn_metrics.MyMetricsRegistry;
-import com.elephantscale.learn_metrics.Utils;
+import com.elephantscale.learn_metrics.MyUtils;
 
 public class Producer implements Runnable {
 	static AtomicLong totalEventsProduced = new AtomicLong();
@@ -46,7 +46,7 @@ public class Producer implements Runnable {
 		while (this.keepRunning) {
 			try {
 				addToQ();
-				Utils.randomDelay(250,500);
+				MyUtils.randomDelay(250,500);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -56,7 +56,7 @@ public class Producer implements Runnable {
 
 	public void addToQ() {
 		final Timer.Context timerContext = metricsTimerTimeToQ.time();
-		Utils.randomDelay(10);
+		MyUtils.randomDelay(10);
 		Payload payload = new Payload();
 		payload.size = 100 + random.nextInt(500 - 100 + 1); // size between 100
 															// - 500

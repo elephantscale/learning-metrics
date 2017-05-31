@@ -5,7 +5,7 @@ import org.apache.logging.log4j.Logger;
 
 import com.codahale.metrics.Timer;
 import com.elephantscale.learn_metrics.MyMetricsRegistry;
-import com.elephantscale.learn_metrics.Utils;
+import com.elephantscale.learn_metrics.MyUtils;
 
 public class Timers {
 	
@@ -28,7 +28,7 @@ public class Timers {
 	
 	public static void doSomethingCool() {
 		final Timer.Context timerContext = timerProcessingTime.time();
-		Utils.randomDelay(300);  // simulate doing something cool :-)
+		MyUtils.randomDelay(300);  // simulate doing something cool :-)
 		//LOG.info("doing something cool");
 		timerContext.stop();
 		

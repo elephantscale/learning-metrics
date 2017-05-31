@@ -8,7 +8,7 @@ import org.apache.logging.log4j.Logger;
 import com.codahale.metrics.Meter;
 import com.codahale.metrics.Timer;
 import com.elephantscale.learn_metrics.MyMetricsRegistry;
-import com.elephantscale.learn_metrics.Utils;
+import com.elephantscale.learn_metrics.MyUtils;
 
 public class Consumer implements Runnable {
 	private static final Logger LOG = LogManager.getLogger();
@@ -58,7 +58,7 @@ public class Consumer implements Runnable {
 
 			// process
 			final Timer.Context timerContext2 = metricsTimerTimeToProcess.time();
-			Utils.randomDelay(300,800); // simulate processing
+			MyUtils.randomDelay(300,800); // simulate processing
 			payload.processedTime = System.nanoTime(); // done processing
 			payload.timeToProcess = timerContext2.stop();
 			LOG.debug("Consumer:" + this.id + " : payload:" + payload.id + " time to process: " + payload.timeToProcess

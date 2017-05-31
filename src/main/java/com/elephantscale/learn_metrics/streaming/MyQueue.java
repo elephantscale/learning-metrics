@@ -8,7 +8,7 @@ import org.apache.logging.log4j.Logger;
 
 import com.codahale.metrics.Counter;
 import com.elephantscale.learn_metrics.MyMetricsRegistry;
-import com.elephantscale.learn_metrics.Utils;
+import com.elephantscale.learn_metrics.MyUtils;
 
 public class MyQueue {
 	private static final Logger LOG = LogManager.getLogger();
@@ -22,7 +22,7 @@ public class MyQueue {
 	static AtomicLong totalEventsQueued = new AtomicLong();
 
 	public void addToQ(Payload payload) {
-		Utils.randomDelay(20);
+		MyUtils.randomDelay(20);
 		payload.queuedTime = System.nanoTime();
 		this.queue.add(payload);
 		metricsCounterMsgsInQ.inc();
@@ -32,7 +32,7 @@ public class MyQueue {
 	}
 
 	public Payload deQueue() throws InterruptedException {
-		Utils.randomDelay(30);
+		MyUtils.randomDelay(30);
 		Payload payload = this.queue.take();
 		payload.dequeedTime = System.nanoTime();
 		metricsCounterMsgsInQ.dec();

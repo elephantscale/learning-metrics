@@ -7,7 +7,7 @@ import org.apache.logging.log4j.Logger;
 
 import com.codahale.metrics.Histogram;
 import com.elephantscale.learn_metrics.MyMetricsRegistry;
-import com.elephantscale.learn_metrics.Utils;
+import com.elephantscale.learn_metrics.MyUtils;
 
 public class Histograms {
 	
@@ -22,7 +22,7 @@ public class Histograms {
 			int packetSize = 100 + random.nextInt(500 - 100 + 1);
 			metricsHistMessageSize.update(packetSize);
 
-			Utils.randomDelay(300);  // simulate doing something cool :-)
+			MyUtils.randomDelay(300);  // simulate doing something cool :-)
 			
 		}
 

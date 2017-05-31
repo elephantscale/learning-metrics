@@ -2,7 +2,7 @@ package com.elephantscale.learn_metrics;
 
 import java.util.Random;
 
-public class Utils {
+public class MyUtils {
 	
 	private static final Random random = new Random();
 	

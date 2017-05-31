@@ -5,7 +5,7 @@ import org.apache.logging.log4j.Logger;
 
 import com.codahale.metrics.Meter;
 import com.elephantscale.learn_metrics.MyMetricsRegistry;
-import com.elephantscale.learn_metrics.Utils;
+import com.elephantscale.learn_metrics.MyUtils;
 
 public class Meters {
 	
@@ -27,7 +27,7 @@ public class Meters {
 	}
 	
 	public static void doSomethingCool() {
-		Utils.randomDelay(300);  // simulate doing something cool :-)
+		MyUtils.randomDelay(300);  // simulate doing something cool :-)
 		LOG.info("doing something cool");
 		metricsMeterRequests.mark();
 		

@@ -8,11 +8,12 @@ import org.apache.logging.log4j.Logger;
 
 import com.codahale.metrics.Counter;
 import com.elephantscale.learn_metrics.MyMetricsRegistry;
+import com.elephantscale.learn_metrics.MyUtils;
 
 public class RunApp {
 	private static final Logger logger = LogManager.getLogger();
 	static int numProducers = 10;
-	static int numConsumers = 4;
+	static int numConsumers = 5;
 	private static Producer[] producers;
 	private static Consumer[] consumers;
 	private final static ExecutorService producerExecutor = Executors.newFixedThreadPool(numProducers);
@@ -23,12 +24,6 @@ public class RunApp {
 
 	public static void main(String[] args) {
 		MyQueue queue = new MyQueue();
-
-		Runtime.getRuntime().addShutdownHook(new Thread() {
-			public void run() {
-				shutdown();
-			}
-		});
 
 		logger.info("producers :" + numProducers + ", consumers: " + numConsumers);
 
@@ -51,8 +46,16 @@ public class RunApp {
 		}
 		
 		logger.info("Hit Ctrl+C to terminate program");
+		
+		while (true) {
+			MyUtils.sleepFor(10*1000);
+			logger.info("== Producers: total events produced : " + Producer.totalEventsProduced);
+			logger.info("== Consumers: total events consumed : " + Consumer.totalEventsConsumed);
+			logger.info("== Q: total events queued : " + MyQueue.totalEventsQueued);
+		}
 	}
 
+	/*
 	public static void shutdown() {
 		// shutdown producers
 		logger.info("shutting down producers...");
@@ -72,12 +75,7 @@ public class RunApp {
 		producerExecutor.shutdownNow();
 		consumerExecutor.shutdownNow();
 
-		logger.info("== Producers: total events produced : " + Producer.totalEventsProduced);
-		logger.info("== Consumers: total events consumed : " + Consumer.totalEventsConsumed);
-		logger.info("== Q: total events queued : " + MyQueue.totalEventsQueued);
-		
-		System.exit(0);
-
 	}
+	*/
 
 }

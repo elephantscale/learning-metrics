@@ -42,7 +42,7 @@ public class MetricsDemo {
 			histogram();
 			meter();
 			timer();
-			Utils.randomDelay(500);
+			MyUtils.randomDelay(500);
 		}
 
 	}
@@ -80,7 +80,7 @@ public class MetricsDemo {
 	// measure the time taken to process
 	public static void timer() {
 		final Timer.Context timerContext = metricsTimer.time();
-		Utils.randomDelay(300);  // simulate doing something cool :-)
+		MyUtils.randomDelay(300);  // simulate doing something cool :-)
 		timerContext.stop();
 		
 	}
