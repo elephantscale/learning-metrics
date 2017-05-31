@@ -2,6 +2,9 @@ package com.elephantscale.learn_metrics;
 
 import java.util.Random;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.codahale.metrics.Counter;
 import com.codahale.metrics.Gauge;
 import com.codahale.metrics.Histogram;
@@ -10,13 +13,18 @@ import com.codahale.metrics.Timer;
 
 public class MetricsDemo {
 
+	// metrics stuff
 	private static final Counter metricsCounter = MyMetricsRegistry.metrics.counter("demo.counter");
 	private static final Histogram metricsHistogram = MyMetricsRegistry.metrics.histogram("demo.histogram");
 	private static final Meter metricsMeter = MyMetricsRegistry.metrics.meter("demo.meter");
 	private static final Timer metricsTimer = MyMetricsRegistry.metrics.timer("demo.timer");
+
 	private static final Random random = new Random();
+	private static final Logger logger = LogManager.getLogger();
 	
 	public static void main(String[] args) throws Exception {
+		
+		logger.info("MetricsDemo starting ...");
 		
 		// setup
 		// initial count
