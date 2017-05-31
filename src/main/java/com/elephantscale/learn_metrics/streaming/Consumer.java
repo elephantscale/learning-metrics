@@ -22,7 +22,7 @@ public class Consumer implements Runnable {
 	static final AtomicLong totalEventsConsumed = new AtomicLong();
 
 	String id;
-	boolean keepRunning;
+	volatile boolean keepRunning;
 	MyQueue queue;
 
 	public Consumer(String id, MyQueue q) {

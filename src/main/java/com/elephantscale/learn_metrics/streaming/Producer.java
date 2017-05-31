@@ -26,7 +26,7 @@ public class Producer implements Runnable {
 	private Random random = new Random();
 
 	String id;
-	boolean keepRunning;
+	volatile boolean keepRunning;
 	MyQueue queue;
 
 	public Producer(String id, MyQueue q) {

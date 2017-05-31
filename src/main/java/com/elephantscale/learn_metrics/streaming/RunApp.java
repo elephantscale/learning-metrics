@@ -13,7 +13,7 @@ import com.elephantscale.learn_metrics.MyUtils;
 public class RunApp {
 	private static final Logger logger = LogManager.getLogger();
 	static int numProducers = 10;
-	static int numConsumers = 5;
+	static int numConsumers = 10;
 	private static Producer[] producers;
 	private static Consumer[] consumers;
 	private final static ExecutorService producerExecutor = Executors.newFixedThreadPool(numProducers);
@@ -44,38 +44,27 @@ public class RunApp {
 			consumerExecutor.execute(consumers[i]);
 			metricsCounterConsumers.inc();
 		}
-		
+
+		Runtime.getRuntime().addShutdownHook(new Thread() {
+			public void run() {
+				System.out.println("terminating...");
+				for (Producer p : producers) {
+					p.stop();
+				}
+				for (Consumer c : consumers) {
+					c.stop();
+				}
+			}
+		});
+
 		logger.info("Hit Ctrl+C to terminate program");
-		
+
 		while (true) {
-			MyUtils.sleepFor(10*1000);
+			MyUtils.sleepFor(10 * 1000);
 			logger.info("== Producers: total events produced : " + Producer.totalEventsProduced);
 			logger.info("== Consumers: total events consumed : " + Consumer.totalEventsConsumed);
 			logger.info("== Q: total events queued : " + MyQueue.totalEventsQueued);
 		}
 	}
-
-	/*
-	public static void shutdown() {
-		// shutdown producers
-		logger.info("shutting down producers...");
-		for (int i = 0; i < numProducers; i++)
-			producers[i].stop();
-		producerExecutor.shutdown();
-		metricsCounterProducers.dec(numProducers);
-
-		// shutdown consumers
-		logger.info("shutting down consumers...");
-		for (int i = 0; i < numConsumers; i++)
-			consumers[i].stop();
-		consumerExecutor.shutdown();
-		metricsCounterConsumers.dec(numConsumers);
-
-		// shutdown threadpools
-		producerExecutor.shutdownNow();
-		consumerExecutor.shutdownNow();
-
-	}
-	*/
 
 }
