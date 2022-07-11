@@ -1,0 +1,22 @@
+# Generic
+tmp/
+*.zip
+*.out
+
+# java artifacts
+*.class
+*.jar
+target
+
+# Eclipse artifacts
+.classpath
+.project
+.factorypath
+.settings
+
+# IntelliJ
+.idea
+
+# Python
+*.pyc
+.pycache

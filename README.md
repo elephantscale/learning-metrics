@@ -1,4 +1,12 @@
 # Learning Metrics
+
+This repo is obsolete.
+
+For latest please see [elephantscale/metrics-in-docker](https://github.com/elephantscale/metrics-in-docker)
+
+---
+
+
 Examples to learn Metrics library.
 
 We have 2 sections
